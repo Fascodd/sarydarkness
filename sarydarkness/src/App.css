@@ -1,0 +1,52 @@
+*{
+  margin:0;
+  padding:0;
+}
+.App{
+  height:100vh;
+  width:100vw;
+}
+#container{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width:100%;
+  height: 100%;
+}
+header,.filter-selector{
+  display:flex;
+  width:100%;
+  height:5%;
+  background-color:pink;
+}
+.showcase{
+  width:100%;
+  height:45%;
+  background-color:greenyellow;
+}
+.gallery{
+background-color: indigo;
+flex:1;
+}
+#signature{
+  width:25%;
+}
+header ul, .filter-selector ul{
+  display:flex;
+  list-style: none;
+  justify-content: space-evenly;
+}
+header ul{
+flex:.5;
+}
+.header-nav-item,.filter-item{
+  border:1px black solid;
+  padding:1em 2em;
+}
+.dropdown{
+  margin-left:13em;
+}
+.filter-selector ul{
+  flex:.7;
+}
+
