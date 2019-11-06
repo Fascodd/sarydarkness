@@ -1,52 +1,144 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.App{
-  height:100vh;
-  width:100vw;
+
+* h1 {
+  font-family: 'Philosopher', sans-serif;
 }
-#container{
-  display:flex;
+
+* p {
+  font-family: 'Kreon', serif;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+}
+
+#container {
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   height: 100%;
 }
-header,.filter-selector{
-  display:flex;
-  width:100%;
-  height:5%;
-  background-color:pink;
+
+header, .filter-selector {
+  display: flex;
+  width: 100%;
+  height: 5%;
+
 }
-.showcase{
-  width:100%;
-  height:45%;
-  background-color:greenyellow;
+
+.showcase {
+  display: flex;
+  width: 100%;
+  height: 45%;
 }
-.gallery{
-background-color: indigo;
-flex:1;
+
+.gallery {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
 }
-#signature{
-  width:25%;
+.gallery-img{
+  width:20%;
+  height:50%;
 }
-header ul, .filter-selector ul{
-  display:flex;
+
+#signature {
+  width: 25%;
+}
+
+header ul, .filter-selector ul {
+  display: flex;
   list-style: none;
   justify-content: space-evenly;
 }
-header ul{
-flex:.5;
-}
-.header-nav-item,.filter-item{
-  border:1px black solid;
-  padding:1em 2em;
-}
-.dropdown{
-  margin-left:13em;
-}
-.filter-selector ul{
-  flex:.7;
+
+header ul {
+  flex: .5;
 }
 
+.header-nav-item, .filter-item {
+  padding: 1em 2em;
+}
+
+.dropdown {
+  margin-left: 13em;
+}
+
+.filter-selector ul {
+  flex: .7;
+}
+
+.catagory {
+  font-size: 1.3em;
+  font-family: 'Oswald', serif;
+  transition:550ms;
+}
+
+.catagory:hover {
+  cursor: pointer;
+}
+
+.active-page {}
+
+.active-cat {
+  color:white;
+  background-color: rgb(24, 24, 24);
+}
+
+.showcase {
+  position: relative;
+}
+
+.showcase-img:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+  top: 0;
+  left: 0;
+  background-color: rgb(24, 24, 24);
+}
+
+.showcase-img {
+  background-size: cover;
+  width: 33.33%;
+  height: 100%;
+  filter: grayscale(1);
+}
+
+.showcase-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:0;
+  animation: showcaseFromBot 750ms ease-out;
+}
+
+.showcase-header {
+  z-index: 10;
+  color: white;
+  font-size: 3em;
+}
+
+.showcase-text {
+  text-align: center;
+  z-index: 10;
+  width: 50%;
+  color: rgba(231, 246, 253, 0.972);
+  font-size: 2em;
+}
+@keyframes showcaseFromBot{
+  0%{left: 50%;opacity:0;}
+  100%{left:0;opacity:1}
+}
