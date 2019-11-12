@@ -38,13 +38,15 @@ header, .filter-selector {
 }
 
 .gallery {
+  padding:4em;
+  margin-left:5em;
   background-color: rgb(255, 255, 255);
   flex: 1;
+  display:flex;
+  flex-wrap: wrap;
+ 
 }
-.gallery-img{
-  width:20%;
-  height:50%;
-}
+
 
 #signature {
   width: 25%;
@@ -109,6 +111,12 @@ header ul {
   width: 33.33%;
   height: 100%;
   filter: grayscale(1);
+}
+.gallery-img{
+  background-size: cover;
+  width:10%;
+  height:25%;
+  margin:.75em 1em;
 }
 
 .showcase-text-wrapper {
