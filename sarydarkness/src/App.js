@@ -105,7 +105,7 @@ class App extends React.Component {
             { transform: `translateX(${0}px) translateY(${0}px)` }
           ], {
             delay: 0,
-            duration: 500,
+            duration: 300,
             fill: "forwards"
           })
         }
@@ -117,7 +117,7 @@ class App extends React.Component {
             { opacity: 1, transform: "scale(1)" }
           ], {
             duration: 500,
-            delay: 500,
+            delay: 300,
             fill: "forwards"
           })
         }
@@ -129,20 +129,27 @@ class App extends React.Component {
 
         if (prevImageState.prevDisplay === "block") {
           //image went from "block" to "none"
-        
+          image.style.display = "block";
+          image.style.position = "absolute";
+          image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
+          image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop)}px`;
+
           image.animate([
             { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px) translateY(${currImagePosX}px) ` },
             { opacity: 1, transform: `scale(1) translateX(${currImagePosX}px) translateY(${currImagePosX}px)` }
           ], {
-            duration: 500,
+            duration: 300,
             delay: 0,
             direction: "reverse",
             fill: "forwards"
           })
-          setTimeout(() => image.style.display = "none", 500)
+          setTimeout(() => {
+            image.style.position = "relative";
+            image.style.left = `${0}px`;
+            image.style.top = `${0}px`;
+            image.style.display = "none";
 
-
-
+          }, 300);
         }
       }
 

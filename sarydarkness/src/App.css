@@ -114,9 +114,9 @@ header ul {
 }
 .gallery-img{
   background-size: cover;
-  width:10%;
-  height:25%;
-  margin:.75em 1em;
+  width:150px;
+  height:150px;
+  margin:2px 20px;
 }
 
 .showcase-text-wrapper {
