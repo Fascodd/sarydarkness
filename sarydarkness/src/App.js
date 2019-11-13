@@ -7,6 +7,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      Pages:
+        [{ id: 1, text: "Home", classes: "catagory filter-item active-cat" },
+        { id: 2, text: "Info", classes: "catagory filter-item " },
+        { id: 3, text: "Request", classes: "catagory filter-item " }]
+      ,
       video3: video3,
       gallery_img,
       itemList: [
@@ -18,15 +23,27 @@ class App extends React.Component {
         { id: 0, catagory: "all", name: "All", classes: "catagory filter-item  active-cat", selected: true },
         { id: 1, catagory: "joker", name: "Joker", classes: "catagory filter-item ", selected: false },
         { id: 2, catagory: "study", name: "Study", classes: "catagory filter-item", selected: false },
-        { id: 3, catagory: "neon_demon", name: "Neon Demon", classes: "catagory filter-item", selected: false },
-      ]
+        { id: 3, catagory: "neon_demon", name: "Neon Demon", classes: "catagory filter-item", selected: false }
+      ],
+      FitlerImages: false,
     }
 
-    this.Fade = this.Fade.bind(this);
     this.OnCatagoryClick = this.OnCatagoryClick.bind(this);
+    this.PageNav = this.PageNav.bind(this);
 
   }
-  Fade = () => {
+  PageNav = (e) => {
+    let selectedPage = this.state.Pages.filter(obj => e.target.id === obj.id.toString())[0]
+    if (e.target.tagName === "LI") {
+      this.setState(prevstate => ({
+        Pages: prevstate.Pages.map(
+          obj =>
+            obj.id === selectedPage.id ?
+              { ...obj, classes: "catagory filter-item active-cat" } :
+              { ...obj, classes: "catagory filter-item" }
+        )
+      }))
+    }
   }
   OnCatagoryClick = (e) => {
     let selectedCat = this.state.catList.filter(obj => e.target.id === obj.id.toString())[0]
@@ -68,7 +85,7 @@ class App extends React.Component {
       CatagoryItemChange();
       FilterGalleryImages();
       SetStateOfImages();
-
+      this.setState({ FitlerImages: true });
     };
 
   }
@@ -85,75 +102,81 @@ class App extends React.Component {
     }))
   }
   componentDidUpdate() {
-    console.clear();
+    if (this.state.FitlerImages) {
+      Array.from(document.querySelectorAll('.gallery-img')).map((image, index) => {
+        const currImagePosX = image.getBoundingClientRect().x;
+        const currImagePosY = image.getBoundingClientRect().y;
+        const prevImageState = this.state.gallery_img[index];
+        const prevImgagePosX = prevImageState.xPos;
+        const prevImgagePosY = prevImageState.yPos;
+        const durationOfAnimation = 300;
 
-    Array.from(document.querySelectorAll('.gallery-img')).map((image, index) => {
-      const currImagePosX = image.getBoundingClientRect().x;
-      const currImagePosY = image.getBoundingClientRect().y;
-      const prevImageState = this.state.gallery_img[index];
-      const prevImgagePosX = prevImageState.xPos;
-      const prevImgagePosY = prevImageState.yPos;
+        // for images that are displayed and will not move
+        if (image.style.display === "block") {
 
-      // for images that are displayed and will not move
-      if (image.style.display === "block") {
+          if (prevImageState.prevDisplay === "block") {
+            // image prevDisplay was "block" and currDisplay is "block"
 
-        if (prevImageState.prevDisplay === "block") {
-          // image prevDisplay was "block" and currDisplay is "block"
+            image.animate([
+              { transform: `translateX(${prevImgagePosX - currImagePosX}px) translateY(${prevImgagePosY - currImagePosY}px)` },
+              { transform: `translateX(${0}px) translateY(${0}px)` }
+            ], {
+              delay: 0,
+              duration: durationOfAnimation,
+              fill: "forwards"
+            })
+          }
+          if (prevImageState.prevDisplay === "none") {
+            // if image goes from "none" to "block"
 
-          image.animate([
-            { transform: `translateX(${prevImgagePosX - currImagePosX}px) translateY(${prevImgagePosY - currImagePosY}px)` },
-            { transform: `translateX(${0}px) translateY(${0}px)` }
-          ], {
-            delay: 0,
-            duration: 300,
-            fill: "forwards"
-          })
+            image.animate([
+              { opacity: 0, transform: "scale(0)" },
+              { opacity: 1, transform: "scale(1)" }
+            ], {
+              duration: durationOfAnimation,
+              delay: durationOfAnimation,
+              fill: "forwards"
+            })
+          }
         }
-        if (prevImageState.prevDisplay === "none") {
-          // if image goes from "none" to "block"
+        else if (image.style.display === "none") {
+          if (currImagePosX - prevImgagePosX === 0 && currImagePosY - prevImgagePosY === 0) {
+            // image is "none" and did not move
+          }
 
-          image.animate([
-            { opacity: 0, transform: "scale(0)" },
-            { opacity: 1, transform: "scale(1)" }
-          ], {
-            duration: 500,
-            delay: 300,
-            fill: "forwards"
-          })
+          if (prevImageState.prevDisplay === "block") {
+            //image went from "block" to "none"
+
+            //Gets image out of the way for the other animations and positions image "absolute" by previous offset
+            // Then allows for animation of scale(1) to scale(0)
+            image.style.display = "block";
+            image.style.position = "absolute";
+            image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
+            image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop)}px`;
+
+            image.animate([
+              { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px) translateY(${currImagePosX}px) ` },
+              { opacity: 1, transform: `scale(1) translateX(${currImagePosX}px) translateY(${currImagePosX}px)` }
+            ], {
+              duration: durationOfAnimation,
+              delay: 0,
+              direction: "reverse",
+              fill: "forwards"
+            })
+            setTimeout(() => {
+              image.style.position = "relative";
+              image.style.left = `${0}px`;
+              image.style.top = `${0}px`;
+              image.style.display = "none";
+
+            }, durationOfAnimation);
+          }
         }
-      }
-      else if (image.style.display === "none") {
-        if (currImagePosX - prevImgagePosX === 0 && currImagePosY - prevImgagePosY === 0) {
-          // image is "none" and did not move
-        }
-
-        if (prevImageState.prevDisplay === "block") {
-          //image went from "block" to "none"
-          image.style.display = "block";
-          image.style.position = "absolute";
-          image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-          image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop)}px`;
-
-          image.animate([
-            { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px) translateY(${currImagePosX}px) ` },
-            { opacity: 1, transform: `scale(1) translateX(${currImagePosX}px) translateY(${currImagePosX}px)` }
-          ], {
-            duration: 300,
-            delay: 0,
-            direction: "reverse",
-            fill: "forwards"
-          })
-          setTimeout(() => {
-            image.style.position = "relative";
-            image.style.left = `${0}px`;
-            image.style.top = `${0}px`;
-            image.style.display = "none";
-
-          }, 300);
-        }
-      }
-
-    })
+        // To avoid " Expected to return a value in arrow function  array-callback-return"
+        this.setState({ FitlerImages: false });
+        return null
+      })
+    }
   }
   render() {
     // list of filterable gallery catagories
@@ -167,10 +190,9 @@ class App extends React.Component {
             <div id="signature">
               <img src="#" alt="#"></img>
             </div>
-            <ul>
-              <li className="catagory header-nav-item">Home </li>
-              <li className="catagory header-nav-item">Info</li>
-              <li className="catagory header-nav-item">Request</li>
+            <ul onClick={this.PageNav}>
+              {this.state.Pages.map(item =>
+                <li key={item.id} id={item.id} className={item.classes}>{item.text}</li>)}
             </ul>
           </header>
 
