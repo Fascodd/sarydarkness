@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+ 
 }
 
 * h1 {
@@ -16,6 +17,50 @@
   width: 100vw;
 }
 
+#enter-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+#overlay-cover {
+  z-index: 200;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+#overlay-video {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(1);
+}
+
+#enter-button {
+  position: absolute;
+  z-index: 300;
+  width: 20%;
+  height: 10%;
+  font-family: 'Philosopher', sans-serif;
+  font-size: 50px;
+  border-radius: 10px;
+  transition: 700ms;
+  background-color: white;
+  color: black;
+}
+
+#enter-button:hover {
+  transition: 700ms;
+  background-color: black;
+  color: white;
+}
+
 #container {
   display: flex;
   flex-wrap: wrap;
@@ -27,26 +72,28 @@
 header, .filter-selector {
   display: flex;
   width: 100%;
-  height: 5%;
-
 }
-
+.filter-selector{
+  width:75%;
+  height:65px;
+  margin:auto;
+}
 .showcase {
   display: flex;
   width: 100%;
   height: 45%;
 }
-
-.gallery {
-  padding:4em;
-  margin-left:5em;
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  display:flex;
-  flex-wrap: wrap;
- 
+#gallery-wrapper{
+  display: flex;
+ flex:1;
 }
-
+.gallery {
+  width:75%;
+  flex:1;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-wrap: wrap;
+}
 
 #signature {
   width: 25%;
@@ -57,7 +104,10 @@ header ul, .filter-selector ul {
   list-style: none;
   justify-content: space-evenly;
 }
-
+.filter-selector ul{
+  width:100%;
+  height:100%;
+}
 header ul {
   flex: .5;
 }
@@ -70,24 +120,19 @@ header ul {
   margin-left: 13em;
 }
 
-.filter-selector ul {
-  flex: .7;
-}
 
 .catagory {
   font-size: 1.3em;
   font-family: 'Oswald', serif;
-  transition:550ms;
+  transition: 550ms;
 }
 
 .catagory:hover {
   cursor: pointer;
 }
 
-.active-page {}
-
 .active-cat {
-  color:white;
+  color: white;
   background-color: rgb(24, 24, 24);
 }
 
@@ -112,11 +157,13 @@ header ul {
   height: 100%;
   filter: grayscale(1);
 }
-.gallery-img{
+
+.gallery-img {
+ 
   background-size: cover;
-  width:150px;
-  height:150px;
-  margin:2px 20px;
+  width: 150px;
+  height: 150px;
+  margin: 10px 10px;
 }
 
 .showcase-text-wrapper {
@@ -129,8 +176,7 @@ header ul {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index:0;
-  animation: showcaseFromBot 750ms ease-out;
+  z-index: 0;
 }
 
 .showcase-header {
@@ -145,8 +191,4 @@ header ul {
   width: 50%;
   color: rgba(231, 246, 253, 0.972);
   font-size: 2em;
-}
-@keyframes showcaseFromBot{
-  0%{left: 50%;opacity:0;}
-  100%{left:0;opacity:1}
 }
