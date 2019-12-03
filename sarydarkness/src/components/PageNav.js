@@ -5,9 +5,9 @@ export default class PageNav extends React.Component {
         super();
         this.state = {
             Pages:
-                [{ id: 1, text: "Home", classes: "catagory filter-item active-cat" },
-                { id: 2, text: "Info", classes: "catagory filter-item " },
-                { id: 3, text: "Request", classes: "catagory filter-item " }]
+                [{ id: 1, text: "Home", classes: "catagory filter-item active-cat", left: 0 },
+                { id: 2, text: "Info", classes: "catagory filter-item ", left: 100 },
+                { id: 3, text: "Request", classes: "catagory filter-item ", left: 200 }]
         }
         this.PageNav = this.PageNav.bind(this);
     }
@@ -23,6 +23,10 @@ export default class PageNav extends React.Component {
                 )
             }))
         }
+        const Pages = document.querySelectorAll(".page")
+        Pages.forEach((page, index) => {
+            page.style.left = `${this.state.Pages[index].left}%`
+        })
     }
     render() {
         return (

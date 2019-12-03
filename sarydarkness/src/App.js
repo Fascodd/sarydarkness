@@ -13,10 +13,10 @@ class App extends React.Component {
   }
   EnterSite = () => {
     const enterOverlay = document.getElementById('enter-overlay');
-    const animationDuration = 1000;
+    const animationDuration = 500;
     enterOverlay.animate([
-      { opacity: 1, transform: `scale(1) translateX(0px) ` },
-      { opacity: 0, transform: `scale(.75) translateX(100%) ` }
+      { opacity: 1, transform: `scale(1)` },
+      { opacity: 0, transform: `scale(.75)  ` }
     ], {
       duration: animationDuration
     })
@@ -34,10 +34,24 @@ class App extends React.Component {
         </div>
         <div id="container">
           <PageNav />
-          <Showcase />
-          <Gallery />
-        </div>
+          <div id="nav-page-wrapper">
+            <div id="home-page" className="page">
+              <Showcase />
+              <Gallery />
+            </div>
+            <div id="info-page" className="page">
+              <div id="info-header">
+                <h1>This is the info page header</h1>
+              </div>
+            </div>
+            <div id="request-page" className="page">
+              <div id="request-header">
+                <h1>This is the request page header</h1>
+              </div>
+            </div>
+          </div>
 
+        </div>
       </div >
     );
   }

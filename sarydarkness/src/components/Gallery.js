@@ -82,6 +82,7 @@ export default class Gallery extends React.Component {
                 const prevImgagePosX = prevImageState.xPos;
                 const prevImgagePosY = prevImageState.yPos;
                 const durationOfAnimation = 300;
+                let navbarHeight = document.getElementsByTagName("header")[0].getBoundingClientRect().height;
 
                 // for images that are displayed and will not move
                 if (image.style.display === "block") {
@@ -124,11 +125,12 @@ export default class Gallery extends React.Component {
                         image.style.display = "block";
                         image.style.position = "absolute";
                         image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop)}px`;
+                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight -  parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)}px`;
+
 
                         image.animate([
-                            { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px) translateY(${currImagePosX}px) ` },
-                            { opacity: 1, transform: `scale(1) translateX(${currImagePosX}px) translateY(${currImagePosX}px)` }
+                            { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px)  ` },
+                            { opacity: 1, transform: `scale(1) translateX(${currImagePosX}px) ` }
                         ], {
                             duration: durationOfAnimation,
                             delay: 0,
