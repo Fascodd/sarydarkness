@@ -87,6 +87,7 @@ header{
   height:50px;
   margin:auto;
   margin-top:5px;
+  padding-bottom: 5px;
 }
 .showcase {
   display: flex;
@@ -140,6 +141,7 @@ header ul {
   font-size: 1.5rem;
   font-family: 'Oswald', serif;
   transition: 550ms;
+  box-shadow: 3px 10px 5px grey;
 }
 
 .catagory:hover {
@@ -164,6 +166,7 @@ position:relative;
   flex-direction: column;
   width:100%;
   flex:1;
+  transition: ease-out 1s;
 }
 #home-page{
   height: 100%;

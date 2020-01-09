@@ -12,8 +12,16 @@ export default class PageNav extends React.Component {
         this.PageNav = this.PageNav.bind(this);
     }
     PageNav = (e) => {
+        // additional  funtionality to each target "e"
+        //Using id of each button (li), shift left by the difference between the id-value*100
+        // example: moving from Home(1) to Request(3) would be left:[100-300]% = -200%
+        // moving from Request(3) to Info(2) would be left:[300%-200%] = 100%
         let selectedPage = this.state.Pages.filter(obj => e.target.id === obj.id.toString())[0]
         if (e.target.tagName === "LI") {
+            //testing**
+            const navPageWrapper = document.getElementById("nav-page-wrapper");
+            navPageWrapper.style.transform =`translateX(${100-selectedPage.id*100}%)`
+            //
             this.setState(prevstate => ({
                 Pages: prevstate.Pages.map(
                     obj =>
