@@ -87,6 +87,7 @@ header{
   height:50px;
   margin:auto;
   margin-top:5px;
+  margin-bottom: 10px;
   padding-bottom: 5px;
 }
 .showcase {
@@ -111,6 +112,7 @@ header{
 }
 
 #signature {
+  position: absolute;
   width: 25%;
 }
 
@@ -125,7 +127,8 @@ header ul, .filter-selector ul {
 }
 
 header ul {
-  flex: .5;
+  width:50%;
+  margin:auto;
 }
 
 .header-nav-item, .filter-item {
@@ -136,12 +139,13 @@ header ul {
   margin-left: 13em;
 }
 
-
 .catagory {
+  height:45px;
+  text-align: center;
   font-size: 1.5rem;
   font-family: 'Oswald', serif;
+  width:120px;
   transition: 550ms;
-  box-shadow: 3px 10px 5px grey;
 }
 
 .catagory:hover {
@@ -150,9 +154,7 @@ header ul {
 
 .active-cat {
   color: white;
-  background-color: rgb(24, 24, 24);
-  border: 1px solid black;
-  border-radius: 3px;
+  background-color: rgba(50,50,50,1);
 }
 
 .showcase {
@@ -206,11 +208,11 @@ height:100%;
 }
 
 .gallery-img {
- 
   background-size: cover;
   width: 175px;
   height: 175px;
   margin: 10px 10px;
+  box-shadow: 6px 4px 10px grey;
 }
 
 .showcase-text-wrapper {
