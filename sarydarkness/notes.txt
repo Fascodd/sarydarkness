@@ -1,0 +1,6 @@
+--style buttons
+--style border shadow around gallery images
+--center nav buttons on header
+--figure out how to draft the info and request buttons
+
+--Click to enlarge photos

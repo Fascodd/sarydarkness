@@ -81,7 +81,12 @@ export default class Gallery extends React.Component {
                 const prevImageState = this.state.gallery_img[index];
                 const prevImgagePosX = prevImageState.xPos;
                 const prevImgagePosY = prevImageState.yPos;
+<<<<<<< Updated upstream
                 const durationOfAnimation = 300;
+=======
+                const durationOfAnimation = 250;
+                let navbarHeight = document.getElementsByTagName("header")[0].getBoundingClientRect().height;
+>>>>>>> Stashed changes
 
                 // for images that are displayed and will not move
                 if (image.style.display === "block") {
