@@ -16,12 +16,11 @@ export default class Gallery extends React.Component {
         this.OnCatagoryClick = this.OnCatagoryClick.bind(this);
     }
     OnCatagoryClick = (e) => {
-        console.log(window.scrollY)
         let selectedCat = this.state.catList.filter(obj => e.target.id === obj.id.toString())[0]
         // Changes selected catagory style
         if (e.target.tagName === "LI") {
             let CatagoryItemChange = () => {
-                console.log(document.body.pageYOffset)
+
 
                 this.setState(prevstate => ({
                     catList: prevstate.catList.map(
@@ -51,20 +50,27 @@ export default class Gallery extends React.Component {
                     )
                 }))
             }
+
+
             CatagoryItemChange();
             FilterGalleryImages();
             SetStateOfImages();
             this.setState({ FitlerImages: true });
         };
+
+
+
+
     }
     componentDidMount = () => {
         this.setState(prevstate => ({
             gallery_img: prevstate.gallery_img.map((obj, index) => {
                 const prevPosX = Array.from(document.querySelectorAll('.gallery-img'))[index].getBoundingClientRect().x
                 const prevPosY = Array.from(document.querySelectorAll('.gallery-img'))[index].getBoundingClientRect().y
+
                 return { ...obj, xPos: prevPosX, yPos: prevPosY }
             }
-            ), 
+            )
         }))
     }
     componentDidUpdate() {
@@ -77,7 +83,7 @@ export default class Gallery extends React.Component {
                 const prevImgagePosY = prevImageState.yPos;
                 const durationOfAnimation = 300;
                 let navbarHeight = document.getElementsByTagName("header")[0].getBoundingClientRect().height;
-                console.log(window.scrollY)
+
                 // for images that are displayed and will not move
                 if (image.style.display === "block") {
 
@@ -119,8 +125,8 @@ export default class Gallery extends React.Component {
                         image.style.display = "block";
                         image.style.position = "absolute";
                         image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight - parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)}px`;
-                        
+                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight -  parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)}px`;
+
 
                         image.animate([
                             { opacity: 0, transform: `scale(0) translateX(${currImagePosX}px)  ` },
@@ -136,7 +142,7 @@ export default class Gallery extends React.Component {
                             image.style.left = `${0}px`;
                             image.style.top = `${0}px`;
                             image.style.display = "none";
-                            document.getElementById("gallery-wrapper").children[1].style.height = "auto"
+
                         }, durationOfAnimation);
                     }
                 }
