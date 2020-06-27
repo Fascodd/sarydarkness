@@ -9,9 +9,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {}
-    this.EnterSite = this.EnterSite.bind(this)
+    // this.EnterSite = this.EnterSite.bind(this)
   }
-  EnterSite = () => {
+ /* EnterSite = () => {
     const enterOverlay = document.getElementById('enter-overlay');
     const animationDuration = 500;
     enterOverlay.animate([
@@ -21,17 +21,22 @@ class App extends React.Component {
       duration: animationDuration
     })
     setTimeout(() => enterOverlay.style.display = "none", animationDuration)
+  }*/
+  componentDidMount(){
+    const gallery = document.getElementById('gallery');
+    const galleryFilter = document.getElementById('gallery-wrapper').firstChild;
+    const showcase = document.getElementById('home-page').firstElementChild;
   }
   render() {
     // list of filterable gallery catagories
 
     return (
       <div className="App">
-        <div id="enter-overlay">
+        {/*<div id="enter-overlay">
           <div id="overlay-cover"></div>
           <video id="overlay-video" autoPlay={true} loop={true} muted={true} src={PinkMilk}></video>
           <button onClick={this.EnterSite} id="enter-button">Enter</button>
-        </div>
+    </div>*/}
         <div id="container">
           <PageNav />
           <div id="nav-page-wrapper">
