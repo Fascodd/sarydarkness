@@ -5,7 +5,7 @@ export default class Showcase extends React.Component {
     render() {
         return (
 
-            <div className="showcase">
+            <div className="showcase no-show">
                 {showcase_img.map(image =>
                     <div className="showcase-img" key={image.id} style={{ backgroundImage: `url(${image.src})` }}></div>)
                 }

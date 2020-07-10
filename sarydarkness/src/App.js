@@ -10,28 +10,65 @@ class App extends React.Component {
     super();
     this.state = {}
     this.EnterSite = this.EnterSite.bind(this)
+    this.FadeIn = this.FadeIn.bind(this);
   }
+  FadeIn() {
+    const ar = [];
+    let waitTime = 0;
+    ar.push(Array.from(document.getElementsByTagName("header")));
+    ar.push(Array.from(document.querySelectorAll(".showcase")));
+    ar.push(Array.from(document.querySelectorAll(".filter-selector")));
+    ar.push(Array.from(document.querySelectorAll('.gallery-img')));
+
+    const animationTime = 850;
+
+    ar.map(ar => {
+   
+        ar.map(image => {
+          
+          image.animate([
+            { opacity: 0, transform: 'translateY(200px)' },
+            { opacity: 1, transform: 'translateY(0px)' }
+          ], {
+            duration: animationTime,
+            fill: 'forwards',
+            delay:`${waitTime}`
+          })
+        })
+        waitTime += animationTime/5;
+
+    })
+
+  }
+
   EnterSite = () => {
     const enterOverlay = document.getElementById('enter-overlay');
     const animationDuration = 500;
     enterOverlay.animate([
-      { opacity: 1, transform: `scale(1)` },
-      { opacity: 0, transform: `scale(.75)  ` }
+      { opacity: 0, transform: `scale(1)` },
+      { opacity: 1, transform: `scale(.75)  ` }
     ], {
-      duration: animationDuration
+      duration: animationDuration,
+
     })
-    setTimeout(() => enterOverlay.style.display = "none", animationDuration)
+    setTimeout(() => {
+      enterOverlay.style.display = "none";
+      this.FadeIn();
+    }, animationDuration)
+  }
+  componentDidMount() {
+    this.FadeIn();
   }
   render() {
     // list of filterable gallery catagories
 
     return (
-      <div className="App">
-        <div id="enter-overlay">
+      <div className="App" >
+        {/*} <div id="enter-overlay">
           <div id="overlay-cover"></div>
           <video id="overlay-video" autoPlay={true} loop={true} muted={true} src={PinkMilk}></video>
           <button onClick={this.EnterSite} id="enter-button">Enter</button>
-        </div>
+    </div> {*/}
         <div id="container">
           <PageNav />
           <div id="nav-page-wrapper">

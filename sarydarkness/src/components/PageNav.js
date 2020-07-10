@@ -38,7 +38,7 @@ export default class PageNav extends React.Component {
     }
     render() {
         return (
-            <header>
+            <header className ="no-show">
                 <div id="signature">
                     <img src="#" alt="#"></img>
                 </div>

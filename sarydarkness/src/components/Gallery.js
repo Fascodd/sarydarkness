@@ -155,7 +155,7 @@ export default class Gallery extends React.Component {
     render() {
         return (
             <div id="gallery-wrapper">
-                <div className="filter-selector">
+                <div className="filter-selector no-show">
                     <ul onClick={this.OnCatagoryClick}>
                         {this.state.catList.map(obj =>
                             <li catagory={obj.catagory} key={obj.id} id={obj.id} className={obj.classes}>{obj.name}</li>
