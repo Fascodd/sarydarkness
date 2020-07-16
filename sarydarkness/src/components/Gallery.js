@@ -125,7 +125,7 @@ export default class Gallery extends React.Component {
                         image.style.display = "block";
                         image.style.position = "absolute";
                         image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight -  parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)}px`;
+                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight -  parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)-10}px`;
 
 
                         image.animate([

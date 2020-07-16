@@ -159,7 +159,8 @@ header ul {
 }
 
 .showcase {
-width:100%;
+margin:auto;
+width:80%;
 height:50%;
 position:relative;
 }
