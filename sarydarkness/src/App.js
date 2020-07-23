@@ -4,6 +4,7 @@ import PinkMilk from './videos/Pink Milk _ Speed Paint.mp4'
 import PageNav from './components/PageNav'
 import Showcase from './components/Showcase'
 import Gallery from './components/Gallery'
+import InfoPage from './components/InfoPage'
 class App extends React.Component {
 
   constructor() {
@@ -77,9 +78,7 @@ class App extends React.Component {
               <Gallery />
             </div>
             <div id="info-page" className="page">
-              <div id="info-header">
-                <h1>This is the info page header</h1>
-              </div>
+              <InfoPage/>
             </div>
             <div id="request-page" className="page">
               <div id="request-header">
