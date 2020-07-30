@@ -5,6 +5,7 @@ import PageNav from './components/PageNav'
 import Showcase from './components/Showcase'
 import Gallery from './components/Gallery'
 import InfoPage from './components/InfoPage'
+import RequestPage from './components/RequestPage'
 class App extends React.Component {
 
   constructor() {
@@ -24,19 +25,19 @@ class App extends React.Component {
     const animationTime = 850;
 
     ar.map(ar => {
-   
-        ar.map(image => {
-          
-          image.animate([
-            { opacity: 0, transform: 'translateY(200px)' },
-            { opacity: 1, transform: 'translateY(0px)' }
-          ], {
-            duration: animationTime,
-            fill: 'forwards',
-            delay:`${waitTime}`
-          })
+
+      ar.map(image => {
+
+        image.animate([
+          { opacity: 0, transform: 'translateY(200px)' },
+          { opacity: 1, transform: 'translateY(0px)' }
+        ], {
+          duration: animationTime,
+          fill: 'forwards',
+          delay: `${waitTime}`
         })
-        waitTime += animationTime/5;
+      })
+      waitTime += animationTime / 5;
 
     })
 
@@ -78,12 +79,12 @@ class App extends React.Component {
               <Gallery />
             </div>
             <div id="info-page" className="page">
-              <InfoPage/>
+              <InfoPage />
             </div>
             <div id="request-page" className="page">
-              <div id="request-header">
-                <h1>This is the request page header</h1>
-              </div>
+
+              <RequestPage />
+
             </div>
           </div>
 
