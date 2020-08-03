@@ -3,32 +3,77 @@
     padding: 0;
     box-sizing: border-box;
 }
-#request-page-container{
-    width:70%;
+
+#request-page-container {
+    width: 70%;
 }
-#art-display-cotnainer{
-    width:60%;
-    height:100%;
+
+#art-display-container {
+    position: relative;
+    width: 60%;
+    height: 100%;
+ 
 }
+
 #form-container {
     display: flex;
     width: 40%;
-    height:100%;
+    height: 100%;
 }
-.form-label {
-    position: absolute;
-    display: block;
-    font-weight: 300;
-    z-index: 1;
-    color: black;
-    font-size: 18px;
-    line-height: 0;
+
+.contact-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 4rem;
+    overflow: hidden;
 }
 
 .form-input {
-    margin: 10px 0;
-    padding: 0px;
-    flex: auto;
+    padding-top: 2.4rem;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+.form-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    border-bottom: 3px solid gray;
+}
+
+.form-label::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    bottom: -3px;
+    border-bottom: 3px solid #5fa8d3;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus+.form-label .content-name, .form-input:valid+.form-label .content-name {
+    transform: translateY(-150%);
+    font-size: 14px;
+    color: #5fa8d3
+}
+
+.form-input:focus+.form-label::after, .form-input:valid+.form-label::after {
+    transform: translateX(0%)
 }
 
 form {
@@ -40,18 +85,12 @@ form {
     justify-content: space-around;
 }
 
-.contact-wrapper {
-    display: flex;
-    width: 100%;
-    height: 3rem;
-    justify-content: space-between;
-}
-
 .name {
+    position: relative;
     display: flex;
     width: 45%;
-    height: 3rem;
-   
+    height: 100%;
+    overflow: hidden;
 }
 
 #message-wrapper {
@@ -61,3 +100,45 @@ form {
 textarea {
     resize: none;
 }
+
+#art-display-container1, #art-display-container2 {
+    display: flex;
+    position: relative;
+    width: 800px;
+    height: 200px;
+}
+
+.art-display-image {
+    background-attachment: fixed;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border: 1px solid black;
+}
+
+#image2, #image6 {
+    left: 120px;
+    top: 150px;
+}
+
+#image3, #image7 {
+    left: 240px;
+    top: 250px;
+}
+
+#image4, #image8 {
+    left: 360px;
+    top: 350px;
+}
+
+#image1,#image5 {
+    margin-top: 10px;
+    
+}
+#image5{
+    margin-top:10px;
+    margin-left:10px;
+}
+#image8{
+    margin-left:40px}
