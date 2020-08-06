@@ -81,7 +81,7 @@ export default class Gallery extends React.Component {
                 const prevImageState = this.state.gallery_img[index];
                 const prevImgagePosX = prevImageState.xPos;
                 const prevImgagePosY = prevImageState.yPos;
-                const durationOfAnimation = 300;
+                const durationOfAnimation = 200;
                 let navbarHeight = document.getElementsByTagName("header")[0].getBoundingClientRect().height;
 
                 // for images that are displayed and will not move
@@ -91,8 +91,8 @@ export default class Gallery extends React.Component {
                         // image prevDisplay was "block" and currDisplay is "block"
 
                         image.animate([
-                            { transform: `translateX(${prevImgagePosX - currImagePosX}px) translateY(${prevImgagePosY - currImagePosY}px)` },
-                            { transform: `translateX(${0}px) translateY(${0}px)` }
+                            { transform: `translateX(${prevImgagePosX - currImagePosX}px) translateY(${prevImgagePosY - currImagePosY}px)`, },
+                            { transform: `translateX(${0}px) translateY(${0}px)`, }
                         ], {
                             delay: 0,
                             duration: durationOfAnimation,
@@ -125,7 +125,7 @@ export default class Gallery extends React.Component {
                         image.style.display = "block";
                         image.style.position = "absolute";
                         image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight - parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop) - 10}px`;
+                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight - parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop) }px`;
 
 
                         image.animate([

@@ -11,5 +11,7 @@ const gallery_img = [
     { id: 10, catagory: "study", display: "block", prevDisplay: "", xPos: 0, yPos: 0, src: '/gallery_img/study_8.png' },
     { id: 11, catagory: "neon_demon", display: "block", prevDisplay: "", xPos: 0, yPos: 0, src: '/gallery_img/neon_demon_1.png' },
     { id: 12, catagory: "neon_demon", display: "block", prevDisplay: "", xPos: 0, yPos: 0, src: '/gallery_img/neon_demon_2.png' },
+    { id: 13, catagory: "neon_demon", display: "block", prevDisplay: "", xPos: 0, yPos: 0, src: '/gallery_img/comission_1.png' },
+    { id: 14, catagory: "neon_demon", display: "block", prevDisplay: "", xPos: 0, yPos: 0, src: '/gallery_img/cyborg_purple.png' },
 ]
 export default gallery_img;

@@ -7,13 +7,13 @@ export default class RequestPage extends React.Component {
     }
 
     componentDidMount() {
-        const requestPageCollage = gallery_img;
+       /* const requestPageCollage = gallery_img;
         for (let i = 1; i <= 8; i++) {
             const randomNum = Math.floor(Math.random() * (requestPageCollage.length ) );
             const randomImgSrc = requestPageCollage[randomNum].src;
             document.getElementById(`image${i}`).style.backgroundImage = `url(${randomImgSrc})`;
             requestPageCollage.splice(randomNum, 1)
-        }
+        }*/
     }
     render() {
         return (
