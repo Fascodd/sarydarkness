@@ -14,6 +14,7 @@ export default class Gallery extends React.Component {
             FitlerImages: false,
         }
         this.OnCatagoryClick = this.OnCatagoryClick.bind(this);
+        this.showcaseGalleryImage = this.showcaseGalleryImage.bind(this);
     }
     OnCatagoryClick = (e) => {
         let selectedCat = this.state.catList.filter(obj => e.target.id === obj.id.toString())[0]
@@ -50,17 +51,28 @@ export default class Gallery extends React.Component {
                     )
                 }))
             }
-
-
             CatagoryItemChange();
             FilterGalleryImages();
             SetStateOfImages();
             this.setState({ FitlerImages: true });
         };
+    }
 
 
+    showcaseGalleryImage(e) {
+        const galleryImage = e.target
+        const showcaseImage = document.getElementById("image-showcase");
 
-
+        showcaseImage.src = gallery_img[galleryImage.id - 1].src
+        const displayBackground = document.getElementById("image-showcase-bg");
+        displayBackground.style.zIndex = 1;
+        displayBackground.animate([
+            { opacity: 0 },
+            { opacity: 1 }
+        ], {
+            duration: 200,
+            fill: "forwards"
+        })
     }
     componentDidMount = () => {
         this.setState(prevstate => ({
@@ -81,20 +93,19 @@ export default class Gallery extends React.Component {
                 const prevImageState = this.state.gallery_img[index];
                 const prevImgagePosX = prevImageState.xPos;
                 const prevImgagePosY = prevImageState.yPos;
-                const durationOfAnimation = 200;
+                const durationOfAnimation = 300;
                 let navbarHeight = document.getElementsByTagName("header")[0].getBoundingClientRect().height;
 
-                // for images that are displayed and will not move
+
                 if (image.style.display === "block") {
 
                     if (prevImageState.prevDisplay === "block") {
                         // image prevDisplay was "block" and currDisplay is "block"
-
                         image.animate([
                             { transform: `translateX(${prevImgagePosX - currImagePosX}px) translateY(${prevImgagePosY - currImagePosY}px)`, },
                             { transform: `translateX(${0}px) translateY(${0}px)`, }
                         ], {
-                            delay: 0,
+
                             duration: durationOfAnimation,
                             fill: "forwards"
                         })
@@ -125,7 +136,7 @@ export default class Gallery extends React.Component {
                         image.style.display = "block";
                         image.style.position = "absolute";
                         image.style.left = `${prevImgagePosX - parseInt(window.getComputedStyle(image).marginLeft)}px`;
-                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight - parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop) }px`;
+                        image.style.top = `${prevImgagePosY - parseInt(window.getComputedStyle(image).marginTop) - navbarHeight - parseInt(window.getComputedStyle(document.getElementsByTagName("header")[0]).marginTop)}px`;
 
 
                         image.animate([
@@ -164,8 +175,9 @@ export default class Gallery extends React.Component {
                 </div>
                 <div className="gallery">
                     {this.state.gallery_img.map(image =>
-                        <div className="gallery-img" key={image.id}
-                            style={{ position: "relative", display: image.display, backgroundImage: `url(${image.src})` }} >
+                        <div className="gallery-img" key={image.id} id={image.id}
+                            style={{ position: "relative", display: image.display, backgroundImage: `url(${image.src})` }}
+                            onClick={this.showcaseGalleryImage} >
                         </div>
                     )}
                 </div>

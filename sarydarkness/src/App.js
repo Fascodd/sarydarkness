@@ -72,6 +72,25 @@ class App extends React.Component {
           <button onClick={this.EnterSite} id="enter-button">Enter</button>
     </div> {*/}
         <div id="container">
+          <div id="image-showcase-bg">
+            <div id="image-showcase-container">
+              <div id="showcase-left">
+                <div id="prev-button"></div>
+              </div>
+              <div id="showcase-center">
+                <div id="image-showcase-name">
+                <a id="cancel-button"></a>
+                </div>
+                <div id="image-showcase-wrapper">
+                  <img id="image-showcase"></img>
+                </div>
+
+              </div>
+              <div id="showcase-right">
+                <div id="next-button"></div>
+              </div>
+            </div>
+          </div>
           <PageNav />
           <div id="nav-page-wrapper">
             <div id="home-page" className="page">

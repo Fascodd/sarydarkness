@@ -68,6 +68,7 @@ body {
   align-content: flex-start;
   width: 100%;
   height: 100vh;
+  background-color: white;
 }
 
 header, .filter-selector {
@@ -106,9 +107,9 @@ header {}
   height: 100%;
   background-color: rgb(255, 255, 255);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  overflow:hidden;
+  overflow: hidden;
   align-content: flex-start;
 }
 
@@ -222,8 +223,7 @@ header ul {
   width: 100px;
   height: 100px;
   box-shadow: 6px 4px 10px grey;
-  margin:.9rem .9rem;
-
+  margin: .9rem .9rem;
 }
 
 .showcase-text-wrapper {
@@ -315,4 +315,84 @@ header ul {
 #self-pic {
   width: 60%;
   height: 80%;
+}
+
+#image-showcase-bg {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .9);
+  z-index: -1;
+}
+
+#image-showcase-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+#showcase-left, #showcase-center, #showcase-right {
+  height: 100%;
+}
+
+#showcase-left, #showcase-right {
+  width: 30%
+}
+
+#showcase-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60%
+}
+
+#showcase-left, #showcase-right {
+  display: flex;
+  align-items: center;
+}
+
+#showcase-left {
+  background-color: hotpink;
+  justify-content: end;
+}
+
+#showcase-right {
+  background-color: indigo;
+  justify-content: start;
+}
+
+#image-showcase-name {
+  position: relative;
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+}
+
+#image-showcase-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#next-button, #prev-button {
+  width: 3rem;
+  height: 3rem;
+  background-color: lawngreen;
+  border-radius: 40%;
+}
+
+
+#cancel-button{
+  position: absolute;
+  left:0;
+  bottom:-100%;
+  width:2rem;
+  height: 2rem;
+  background-color: green;
 }
