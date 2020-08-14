@@ -387,12 +387,3 @@ header ul {
   border-radius: 40%;
 }
 
-
-#cancel-button{
-  position: absolute;
-  left:0;
-  bottom:-100%;
-  width:2rem;
-  height: 2rem;
-  background-color: green;
-}

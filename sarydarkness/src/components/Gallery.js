@@ -58,7 +58,7 @@ export default class Gallery extends React.Component {
         };
     }
 
-
+    
     showcaseGalleryImage(e) {
         const galleryImage = e.target
         const showcaseImage = document.getElementById("image-showcase");

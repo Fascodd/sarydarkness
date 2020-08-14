@@ -79,7 +79,7 @@ class App extends React.Component {
               </div>
               <div id="showcase-center">
                 <div id="image-showcase-name">
-                <a id="cancel-button"></a>
+                  <i class="fas fa-camera"></i>
                 </div>
                 <div id="image-showcase-wrapper">
                   <img id="image-showcase"></img>
